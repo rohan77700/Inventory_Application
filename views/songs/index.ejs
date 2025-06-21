@@ -1,0 +1,20 @@
+<%- include('../layout/head') %>
+
+<div class="container">
+    <h1>Songs</h1>
+    <a href="/songs/new" class="btn btn-primary mb-3">Add New Song</a>
+
+    <% songs.forEach(song => { %>
+        <div class="card p-3">
+            <div class="card-body">
+                <h5 class="card-title"><%= song.title %></h5>
+                <p>Duration: <%= song.duration %></p>
+                <p>Album: <%= song.album_title %></p>
+                <a href="/songs/<%= song.id %>/edit" class="btn btn-outline-primary btn-sm">Edit</a>
+                <form action="/songs/<%= song.id %>?_method=DELETE" method="POST" style="display:inline">
+                    <button class="btn btn-outline-danger btn-sm">Delete</button>
+                </form>
+            </div>
+        </div>
+    <% }) %>
+</div>

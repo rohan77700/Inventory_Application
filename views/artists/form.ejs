@@ -1,0 +1,18 @@
+<%- include('../layout/head') %>
+
+<div class="container">
+    <h1 class="mb-4"><%= action %> Artist</h1>
+
+    <form method="POST" class="mb-3">
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input class="form-control" type="text" name="name" value="<%= artist.name || '' %>" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Genre</label>
+            <input class="form-control" type="text" name="genre" value="<%= artist.genre || '' %>">
+        </div>
+        <button class="btn btn-primary" type="submit"><%= action %></button>
+        <a href="/artists" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

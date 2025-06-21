@@ -1,0 +1,29 @@
+<%- include('../layout/head') %>
+
+<div class="container mt-4">
+    <h1 class="mb-2"><%= album.title %></h1>
+    <p class="text-muted mb-3">
+        Artist: <a href="/artists/<%= album.artist_id %>"><%= artist.name %></a> • Released: <%= album.release_year %>
+    </p>
+
+    <div class="mb-4">
+        <a href="/albums/<%= album.id %>/edit" class="btn btn-outline-primary">Edit</a>
+        <a href="/albums" class="btn btn-outline-secondary">← Back</a>
+    </div>
+
+    <hr>
+
+    <h3 class="mb-3">Songs</h3>
+    <% if (songs.length === 0) { %>
+        <p class="text-muted">No songs in this album.</p>
+    <% } else { %>
+        <ul class="list-group">
+            <% songs.forEach(song => { %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span><strong><%= song.title %></strong></span>
+                    <span class="text-muted"><%= song.duration %> min</span>
+                </li>
+            <% }) %>
+        </ul>
+    <% } %>
+</div>

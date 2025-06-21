@@ -1,0 +1,24 @@
+<%- include('../layout/head') %>
+
+<div class="container">
+    <h1 class="mb-2"><%= artist.name %></h1>
+    <p class="text-muted">Genre: <%= artist.genre %></p>
+
+    <a href="/artists/<%= artist.id %>/edit" class="btn btn-outline-primary">Edit</a>
+    <a href="/artists" class="btn btn-outline-secondary">← Back</a>
+
+    <hr>
+
+    <h3>Albums</h3>
+    <% if (albums.length === 0) { %>
+        <p>No albums yet.</p>
+    <% } else { %>
+        <ul class="list-group">
+            <% albums.forEach(album => { %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span><%= album.title %> (<%= album.release_year %>)</span>
+                </li>
+            <% }) %>
+        </ul>
+    <% } %>
+</div>

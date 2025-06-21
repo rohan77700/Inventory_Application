@@ -1,0 +1,30 @@
+<%- include('../layout/head') %>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0">Albums</h1>
+        <a href="/albums/create" class="btn btn-success">+ New Album</a>
+    </div>
+
+    <% if (albums.length === 0) { %>
+        <div class="alert alert-info">No albums available.</div>
+    <% } else { %>
+        <% albums.forEach(album => { %>
+            <div class="card mb-3 shadow-sm border-0">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title mb-1"><%= album.title %></h5>
+                        <p class="mb-0 text-muted"><%= album.artist_name %> &bull; <%= album.release_year %></p>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a href="/albums/<%= album.id %>" class="btn btn-outline-secondary btn-sm">View</a>
+                        <a href="/albums/<%= album.id %>/edit" class="btn btn-outline-primary btn-sm">Edit</a>
+                        <form action="/albums/<%= album.id %>/delete" method="POST" class="d-inline">
+                            <button class="btn btn-outline-danger btn-sm">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    <% } %>
+</div>
